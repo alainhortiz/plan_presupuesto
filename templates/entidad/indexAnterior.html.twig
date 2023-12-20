@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entidad index{% endblock %}
+
+{% block body %}
+    <h1>Entidad index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Codigo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entidad in entidads %}
+            <tr>
+                <td>{{ entidad.id }}</td>
+                <td>{{ entidad.nombre }}</td>
+                <td>{{ entidad.codigo }}</td>
+                <td>
+                    <a href="{{ path('app_entidad_show', {'id': entidad.id}) }}">show</a>
+                    <a href="{{ path('app_entidad_edit', {'id': entidad.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_entidad_new') }}">Create new</a>
+{% endblock %}
